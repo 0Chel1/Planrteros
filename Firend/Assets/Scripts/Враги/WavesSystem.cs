@@ -7,28 +7,34 @@ public class WavesSystem : MonoBehaviour
 {
     public WaveSettings[] Enemys;
     public int CurrentWaavesCount = 0;
-    public int wavesCount;
     public Transform SpawnZone;
     public List<float> TimesToDeal;
     public float time;
     public TextMeshProUGUI WavesText;
+    public TextMeshProUGUI WavesCountText;
     public GameObject BossHealth;
+
     void Start()
     {
-        time = TimesToDeal[0];
         BossHealth.SetActive(false);
+        if (TimesToDeal.Count > 0)
+        {
+            time = TimesToDeal[0];
+        }
     }
 
-    public void Update()
+    void Update()
     {
-        if(CurrentWaavesCount < wavesCount)
+        if (CurrentWaavesCount < Enemys.Length)
         {
             time -= Time.deltaTime;
             WavesText.text = Mathf.Round(time).ToString();
+
             if (time <= 0)
             {
                 SpawnEnemy();
                 CurrentWaavesCount++;
+
                 if (CurrentWaavesCount < TimesToDeal.Count)
                 {
                     time = TimesToDeal[CurrentWaavesCount];
@@ -39,20 +45,28 @@ public class WavesSystem : MonoBehaviour
                 }
             }
         }
-        else if(CurrentWaavesCount == wavesCount)
+        else if (CurrentWaavesCount == Enemys.Length)
         {
-            SpawnEnemy();
-            CurrentWaavesCount++;
             BossHealth.SetActive(true);
-            WavesText.text = "Defeat Mr Big";
+            SpawnEnemy();
+            WavesText.text = "Одолей Босса";
         }
+
+        WavesCountText.text = CurrentWaavesCount + "/" + Enemys.Length;
     }
 
     void SpawnEnemy()
     {
-        for(int j = 0; j < Enemys[CurrentWaavesCount].Enemy_.Length; j++)
+        if (CurrentWaavesCount < Enemys.Length)
         {
-            Instantiate(Enemys[CurrentWaavesCount].Enemy_[j], SpawnZone.position, Quaternion.identity);
+            for (int j = 0; j < Enemys[CurrentWaavesCount].Enemy_.Length; j++)
+            {
+                if (j >= Enemys[CurrentWaavesCount].Enemy_.Length)
+                {
+                    break;
+                }
+                Instantiate(Enemys[CurrentWaavesCount].Enemy_[j], SpawnZone.position, Quaternion.identity);
+            }
         }
     }
 

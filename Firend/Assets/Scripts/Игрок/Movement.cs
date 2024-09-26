@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class Movement : MonoBehaviour
                 Trail();
             }
         }
-        
+
 
         if (isPulling)
         {
@@ -48,7 +49,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < lines.Count; i++)
+        for (int i = 0; i < lines.Count; i++)
         {
             lines[i].SetPosition(0, transform.position);
             lines[i].SetPosition(1, hitPoints[i]);
@@ -75,7 +76,7 @@ public class Movement : MonoBehaviour
             targetPosition = currPos + direction * (distance * 0.5f);
             isPulling = true;
             currPointUsed += 1;
-            if(currPointUsed >= hitPoints.Count)
+            if (currPointUsed >= hitPoints.Count)
             {
                 currPointUsed = 0;
             }

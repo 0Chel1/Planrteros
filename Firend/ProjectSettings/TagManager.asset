@@ -8,6 +8,7 @@ TagManager:
   - Sentry
   - BossHP
   - BossHPObject
+  - whatIsWall
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Friendly
   - Player
   - Enemy
-  - 
+  - LineEnds
   - 
   - 
   - 

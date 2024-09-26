@@ -15,6 +15,7 @@ public class LegProceduralAnimation2 : MonoBehaviour
     public LegProceduralAnimation2 neighbourLeg;
     public bool grounded;
     public float LegMovingSpeed = 10;
+    public float DelayBtwMovingLegs = 0.1f;
     public float duration = 1f;
     private bool loop = true;
     public int LegNumber;
@@ -50,7 +51,7 @@ public class LegProceduralAnimation2 : MonoBehaviour
     {
         while (true)
         {
-            if(Joints.Count == 1)
+            if (Joints.Count == 1)
             {
                 Joints[0].transform.position = BodyJoint.position;
                 Vector3 direction = Joints[0].transform.position - PointToStep.position;
@@ -78,27 +79,30 @@ public class LegProceduralAnimation2 : MonoBehaviour
                 float distanceToMove = distBtwJoints - distances[1];
                 Vector3 newPos = Joints[1].transform.position - direction * distanceToMove;
                 Joints[1].transform.position = newPos;
-                float BodyDist = Vector2.Distance(BodyJoint.position, PointToStep.position);
-                if (BodyDist > 5)
+                if (LegNumber == 1 || LegNumber == 2)
                 {
-                    StartCoroutine(ScaleOverTime(new Vector2(1.5f, 1f), 1));
-                }
-                else if(BodyDist < 5 && BodyDist > 3)
-                {
-                    StartCoroutine(ScaleOverTime(new Vector2(1f, 1f), 1));
-                }
-                else if (BodyDist < 3)
-                {
-                    StartCoroutine(ScaleOverTime(new Vector2(0.5f, 1f), 1));
+                    float BodyDist = Vector2.Distance(BodyJoint.position, PointToStep.position);
+                    if (BodyDist > 5)
+                    {
+                        StartCoroutine(ScaleOverTime(new Vector2(1.5f, 1f), 1));
+                    }
+                    else if (BodyDist < 5 && BodyDist > 3)
+                    {
+                        StartCoroutine(ScaleOverTime(new Vector2(1f, 1f), 1));
+                    }
+                    else if (BodyDist < 3)
+                    {
+                        StartCoroutine(ScaleOverTime(new Vector2(0.5f, 1f), 1));
+                    }
                 }
                 Vector3 direction2 = Joints[0].transform.position - Joints[1].transform.position;
                 float angle2 = Mathf.Atan2(direction2.y, direction2.x) * Mathf.Rad2Deg;
-                if (LegNumber == 1 || LegNumber == 4)
+                if (LegNumber == 1 || LegNumber == 4 || LegNumber == 5)
                 {
                     Quaternion targetRot2 = Quaternion.Euler(new Vector3(0, 0, angle2 - 10f));
                     Joints[0].transform.rotation = targetRot2;
                 }
-                else if(LegNumber == 2 || LegNumber == 3)
+                else if(LegNumber == 2 || LegNumber == 3 || LegNumber == 6)
                 {
                     Quaternion targetRot2 = Quaternion.Euler(new Vector3(0, 0, angle2 + 10f));
                     Joints[0].transform.rotation = targetRot2;
@@ -114,12 +118,12 @@ public class LegProceduralAnimation2 : MonoBehaviour
         if (Joints.Count > 1)
         {
             grounded = false;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(DelayBtwMovingLegs);
             grounded = true;
         }
         else
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(DelayBtwMovingLegs);
             grounded = true;
         }
     }

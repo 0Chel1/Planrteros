@@ -173,6 +173,7 @@ MonoBehaviour:
   neighbourLeg: {fileID: 4142085694780011876}
   grounded: 0
   LegMovingSpeed: 10
+  DelayBtwMovingLegs: 0.1
   duration: 1
   LegNumber: 0
   DistanceBtwSteps: 1.3
@@ -233,6 +234,7 @@ MonoBehaviour:
   neighbourLeg: {fileID: 5242010542849315348}
   grounded: 1
   LegMovingSpeed: 10
+  DelayBtwMovingLegs: 0.1
   duration: 1
   LegNumber: 0
   DistanceBtwSteps: 1.3
@@ -309,7 +311,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 55954273, guid: 94fbc30cf65fa7f4ea24a37c47f089d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -471,6 +473,7 @@ MonoBehaviour:
   neighbourLeg: {fileID: 6307393100814932801}
   grounded: 1
   LegMovingSpeed: 10
+  DelayBtwMovingLegs: 0.1
   duration: 1
   LegNumber: 0
   DistanceBtwSteps: 1.3
@@ -800,7 +803,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  maxHealth: 0
   Collection: {fileID: 6479929502800626785}
+  HPBar: {fileID: 0}
+  BossHealth: {fileID: 0}
+  curShow: 1
 --- !u!61 &5139214375467228976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1118,6 +1125,7 @@ MonoBehaviour:
   neighbourLeg: {fileID: 7938559304956628505}
   grounded: 0
   LegMovingSpeed: 10
+  DelayBtwMovingLegs: 0.1
   duration: 1
   LegNumber: 0
   DistanceBtwSteps: 1.3
@@ -1225,7 +1233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 55954273, guid: 94fbc30cf65fa7f4ea24a37c47f089d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1392,7 +1400,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 55954273, guid: 94fbc30cf65fa7f4ea24a37c47f089d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Sentry : MonoBehaviour
+public class Sentry : Sounds
 {
     public Transform firePoint;
     public GameObject bullet;
+    public int ammoAmount;
+    public int WasteAmmoPerShoot;
     public bool enemyInZone = false;
     public GameObject target;
     public float offset;
     private bool started = false;
+    private ResourcesType resource;
     public FriendlyOrNot currState = FriendlyOrNot.Friendly;
     public enum FriendlyOrNot
     {
         Enemy,
         Friendly
+    }
+
+    private void Start()
+    {
+        resource = GetComponent<ResourcesType>();
     }
 
     void Update()
@@ -103,9 +111,11 @@ public class Sentry : MonoBehaviour
     {
         while(true)
         {
-            if(target != null)
+            if(target != null && ammoAmount > 0)
             {
                 Instantiate(bullet, firePoint.position, firePoint.rotation);
+                ammoAmount -= 1;
+                PlaySound(0, 0.2f);
                 yield return new WaitForSeconds(2);
             }
             else

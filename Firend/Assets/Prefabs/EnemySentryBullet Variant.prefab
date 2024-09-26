@@ -13,6 +13,14 @@ PrefabInstance:
       value: EnemySentryBullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3653902002761572860, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653902002761572860, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653902002761572860, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -60,6 +68,10 @@ PrefabInstance:
       propertyPath: WhoToHit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8652552134781361968, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bf903f33ff377b479fc49e9e7b39291, type: 3}
     - target: {fileID: 8652552134781361968, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
       propertyPath: m_Color.b
       value: 1

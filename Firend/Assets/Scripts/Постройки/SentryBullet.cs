@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SentryBullet : MonoBehaviour
+public class SentryBullet : Sounds
 {
     public float speed = 20f;
     public int lifetime;
@@ -26,6 +26,7 @@ public class SentryBullet : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+                PlaySound(0, 0.7f, p1: 1f, p2: 1f, destroyed: true);
                 Destroy(gameObject);
             }
         }
@@ -34,6 +35,7 @@ public class SentryBullet : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 collision.GetComponent<PlayerHealth>().TakeDamage(damage);
+                PlaySound(0, 0.7f, p1: 1f, p2: 1f, destroyed: true);
                 Destroy(gameObject);
             }
         }
@@ -43,6 +45,7 @@ public class SentryBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("whatIsWall"))
         {
+            PlaySound(0, 0.7f, p1: 1f, p2: 1f, destroyed: true);
             Destroy(gameObject);
         }
     }

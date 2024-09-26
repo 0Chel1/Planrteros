@@ -16,31 +16,27 @@ public class EnemyHealth : MonoBehaviour
         Yes,
         No
     }
-
-    public void Start()
-    {
-        var hpObj = GameObject.FindGameObjectWithTag("BossHP");
-        BossHealth = GameObject.FindGameObjectWithTag("BossHPObject");
-        if(curShow == ShowHP.Yes)
-            HPBar = hpObj.GetComponent<Image>();
-
-    }
     public void TakeDamage(float damage)
     {
         health -= damage;
         if(health <= 0)
         {
             if (curShow == ShowHP.Yes)
+            {
                 HPBar.fillAmount = 0;
-            Destroy(BossHealth);
+                Destroy(BossHealth);
+            }
             Destroy(Collection);
         }
     }
 
     void Update()
     {
-        if(curShow == ShowHP.Yes)
+        BossHealth = GameObject.FindGameObjectWithTag("BossHPObject");
+        var hpObj = GameObject.FindGameObjectWithTag("BossHP");
+        if (curShow == ShowHP.Yes)
         {
+            HPBar = hpObj.GetComponent<Image>();
             HPBar.fillAmount = health / maxHealth;
         }
     }

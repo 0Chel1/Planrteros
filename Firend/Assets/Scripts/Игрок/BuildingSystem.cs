@@ -24,9 +24,13 @@ public class BuildingSystem : MonoBehaviour
             plHealth.TakeDamage(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        for(int i = 0; i < buildings.Count; i++)
         {
-            ConstructingBuilding(buildings[0]);
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                ConstructingBuilding(buildings[i]);
+                break;
+            }
         }
     }
 

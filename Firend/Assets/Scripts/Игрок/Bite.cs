@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
-public class Bite : MonoBehaviour
+public class Bite : Sounds
 {
     public List<GameObject> EnemysToBite;
     public List<EnemyHealth> EnemyHealths;
@@ -38,25 +38,6 @@ public class Bite : MonoBehaviour
             }
         }
     }
-
-    /*public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision != null)
-        {
-            if (collision.transform.tag == "Enemy")
-            {
-                for (int i = 0; i < EnemysToBite.Count; ++i)
-                {
-                    if (EnemysToBite[i] == null)
-                    {
-                        EnemysToBite[i] = collision.gameObject;
-                        EnemyHealths[i] = EnemysToBite[i].GetComponent<EnemyHealth>();
-                        break;
-                    }
-                }
-            }
-        }
-    }*/
 
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -104,6 +85,8 @@ public class Bite : MonoBehaviour
         if (EnemysToBite.Any(item => item != null))
         {
             animator.SetBool("Chewing", true);
+            PlaySound(0, 0.5f, p1: 1.2f, p2: 1.2f);
+
             for (int i = 0; i < EnemyHealths.Count; ++i)
             {
                 if (EnemysToBite.All(item => item == null))
