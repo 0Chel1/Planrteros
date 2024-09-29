@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class Sentry : Sounds
 {
     public Transform firePoint;
+    public GameObject thisObj;
     public GameObject bullet;
     public int ammoAmount;
-    public int WasteAmmoPerShoot;
+    public int maxAmmoAmount = 10;
+    public int WasteAmmoPerShot;
     public bool enemyInZone = false;
     public GameObject target;
     public float offset;
     private bool started = false;
-    private ResourcesType resource;
+    public ResourcesType resource;
+    public bool HasAmmo = false;
     public FriendlyOrNot currState = FriendlyOrNot.Friendly;
     public enum FriendlyOrNot
     {
@@ -21,9 +24,10 @@ public class Sentry : Sounds
         Friendly
     }
 
-    private void Start()
+    public void Start()
     {
-        resource = GetComponent<ResourcesType>();
+        StartCoroutine(LoadAmmo());
+        resource = thisObj.GetComponent<ResourcesType>();
     }
 
     void Update()
@@ -111,11 +115,22 @@ public class Sentry : Sounds
     {
         while(true)
         {
-            if(target != null && ammoAmount > 0)
+            if(target != null)
             {
-                Instantiate(bullet, firePoint.position, firePoint.rotation);
-                ammoAmount -= 1;
-                PlaySound(0, 0.2f);
+                if (HasAmmo)
+                {
+                    if(ammoAmount > 0)
+                    {
+                        Instantiate(bullet, firePoint.position, firePoint.rotation);
+                        ammoAmount -= WasteAmmoPerShot;
+                        PlaySound(0, 0.5f);
+                    }
+                }
+                else
+                {
+                    Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    PlaySound(0, 0.5f);
+                }
                 yield return new WaitForSeconds(2);
             }
             else
@@ -123,5 +138,24 @@ public class Sentry : Sounds
                 yield return null;
             }
         }
+    }
+
+    IEnumerator LoadAmmo()
+    {
+        while (true)
+        {
+            int resourceIndex = ConvertPowerOfTwoToSequenceNumber((int)resource.currRes) - 1;
+            if (HasAmmo && resource.resAmmount[resourceIndex] > 0 && ammoAmount < maxAmmoAmount)
+            {
+                resource.resAmmount[resourceIndex]--;
+                ammoAmount++;
+            }
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    private int ConvertPowerOfTwoToSequenceNumber(int x)
+    {
+        return x > 0 ? (int)(Math.Log(x, 2) + 1) : 0; // Добавляем проверку на 0
     }
 }

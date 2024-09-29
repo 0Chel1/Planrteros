@@ -21,7 +21,7 @@ public class BuildingSystem : MonoBehaviour
             buidingToPlace = null;
             cursor.gameObject.SetActive(false);
             Cursor.visible = true;
-            plHealth.TakeDamage(1);
+            //plHealth.TakeDamage(1);
         }
 
         for(int i = 0; i < buildings.Count; i++)
@@ -38,6 +38,7 @@ public class BuildingSystem : MonoBehaviour
     {
         cursor.gameObject.SetActive(true);
         cursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
+        cursor.transform.localScale = building.transform.localScale;
         buidingToPlace = building;
         Cursor.visible = false;
     }

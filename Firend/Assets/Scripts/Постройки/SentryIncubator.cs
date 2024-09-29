@@ -6,9 +6,13 @@ public class SentryIncubator : Sounds
 {
     public GameObject sentry;
     public float IncubationTime;
+    public bool playSound = true;
     void Start()
     {
-        PlaySound(0, 2, destroyed: true, p1: 1, p2: 1);
+        if (playSound)
+        {
+            PlaySound(0, 2, destroyed: true, p1: 1, p2: 1);
+        }
         StartCoroutine(Incubation());
     }
 

@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AI: {fileID: 0}
   SentryAI: {fileID: 7422927669151768048}
-  detectionDist: 5
+  detectionDist: 3
   currentTrigger: 1
 --- !u!1 &760956185122927085
 GameObject:
@@ -1116,10 +1116,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c97374f57aa63b49b8398c04fd1c67f, type: 3}
   randSound: []
   firePoint: {fileID: 5141435100725734653}
+  thisObj: {fileID: 0}
   bullet: {fileID: 1142282821959892156, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
+  ammoAmount: 0
+  WasteAmmoPerShot: 0
   enemyInZone: 0
   target: {fileID: 0}
   offset: 0
+  resource: {fileID: 0}
+  HasAmmo: 0
   currState: 1
 --- !u!58 &751937576971368723
 CircleCollider2D:
@@ -1660,6 +1665,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leafs
       objectReference: {fileID: 0}
+    - target: {fileID: 3954207592306742475, guid: db78b23b69b193c4cb4e60ff8b684313, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954207592306742475, guid: db78b23b69b193c4cb4e60ff8b684313, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7543866514621476320, guid: db78b23b69b193c4cb4e60ff8b684313, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -9,6 +9,8 @@ TagManager:
   - BossHP
   - BossHPObject
   - whatIsWall
+  - node
+  - Miner
   layers:
   - Default
   - TransparentFX

@@ -41,18 +41,4 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
     }
-
-    public void StartLoseHealth()
-    {
-        StartCoroutine(HealthDecrease());
-    }
-
-    IEnumerator HealthDecrease()
-    {
-        while (true)
-        {
-            health -= 0.5f;
-            yield return new WaitForSeconds(5);
-        }
-    }
 }
