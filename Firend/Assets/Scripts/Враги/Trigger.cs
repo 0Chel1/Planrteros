@@ -25,6 +25,14 @@ public class Trigger : MonoBehaviour
             {
                 AI.target = collision.gameObject;
             }
+            else if(collision.transform.tag == "Miner")
+            {
+                AI.target = collision.gameObject;
+            }
+            else if (collision.transform.tag == "node")
+            {
+                AI.target = collision.gameObject;
+            }
         }
     }
 

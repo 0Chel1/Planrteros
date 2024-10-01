@@ -609,9 +609,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingLayerID: -582782177
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -688751670, guid: 94fbc30cf65fa7f4ea24a37c47f089d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1051,7 +1051,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 2
 --- !u!114 &2314747078479408669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AI: {fileID: 2486760794795459726}
   SentryAI: {fileID: 0}
-  detectionDist: 4
+  detectionDist: 2
   currentTrigger: 0
 --- !u!1 &6812252912576575563
 GameObject:
@@ -1457,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 6479929502800626785}
     - target: {fileID: 1347608618972344694, guid: d6438ba084413e0418c834748b574dba, type: 3}
       propertyPath: m_Radius
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1555345326788545496, guid: d6438ba084413e0418c834748b574dba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1521,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946491047578442906, guid: d6438ba084413e0418c834748b574dba, type: 3}
       propertyPath: detectionDist
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7626580705914576785, guid: d6438ba084413e0418c834748b574dba, type: 3}
       propertyPath: m_IsActive

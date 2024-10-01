@@ -45,6 +45,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: WallsAndFloor
+    uniqueID: 4040106333
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ores
+    uniqueID: 3712185119
+    locked: 0
+  - name: PlayerStuff
+    uniqueID: 1736297903
+    locked: 0
+  - name: Resources
+    uniqueID: 1516765421
     locked: 0

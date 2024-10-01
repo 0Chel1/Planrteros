@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 7440274307717059796}
   - component: {fileID: 751937576971368723}
   - component: {fileID: 7447139103296569460}
+  - component: {fileID: 3610748046245345574}
   m_Layer: 9
   m_Name: Gun (1)
   m_TagString: Untagged
@@ -1116,14 +1117,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c97374f57aa63b49b8398c04fd1c67f, type: 3}
   randSound: []
   firePoint: {fileID: 5141435100725734653}
-  thisObj: {fileID: 0}
+  thisObj: {fileID: 7696904257378734606}
   bullet: {fileID: 1142282821959892156, guid: 55e7c67128021164b96ad6c68ea75a12, type: 3}
   ammoAmount: 0
+  maxAmmoAmount: 10
   WasteAmmoPerShot: 0
   enemyInZone: 0
   target: {fileID: 0}
   offset: 0
-  resource: {fileID: 0}
+  resource: {fileID: 3610748046245345574}
   HasAmmo: 0
   currState: 1
 --- !u!58 &751937576971368723
@@ -1257,6 +1259,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3610748046245345574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696904257378734606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af0d044ea6a903438e518e15146c7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currRes: 64
+  activeFlags: 
+  LoadIn: 0
+  isFactory: 0
+  resAmmount: 
+  maxResAmmount: 5
+  nearbyNodesScripts: []
+  nearNodesRes: []
+  node: {fileID: 0}
+  nodeRes: {fileID: 0}
+  factory: {fileID: 0}
+  searchRadius: 1
 --- !u!1 &7758358787674463374
 GameObject:
   m_ObjectHideFlags: 0

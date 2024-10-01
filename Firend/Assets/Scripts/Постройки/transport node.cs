@@ -22,6 +22,7 @@ public class transportnode : MonoBehaviour
     public List<GameObject> resourcesSpritesExamples;
     public transportnode connectedWith;
     public ResourcesType buildingResNeed;
+    public GameObject ConnectZone;
     public int counter = 0;
     public bool NodeConstruction = false;
 
@@ -31,11 +32,25 @@ public class transportnode : MonoBehaviour
         line.positionCount = 2;
         line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position);
+        ConnectZone.SetActive(false);
+        ConnectZone.transform.localScale = new Vector2(searchRadius, searchRadius);
     }
 
     private bool AllScriptsInactive()
     {
         return nearbyNodesScripts.All(script => !script.NodeConstruction);
+    }
+
+    void Update()
+    {
+        if (NodeConstruction)
+        {
+            ConnectZone.SetActive(true);
+        }
+        else
+        {
+            ConnectZone.SetActive(false);
+        }
     }
 
     void OnMouseDown()
@@ -164,4 +179,6 @@ public class transportnode : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
+
+    
 }

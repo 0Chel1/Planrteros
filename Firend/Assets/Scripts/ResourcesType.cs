@@ -12,9 +12,9 @@ public class ResourcesType : MonoBehaviour
     public List<int> resAmmount;
     public int maxResAmmount = 5;
     public List<transportnode> nearbyNodesScripts;
-    public List<GameObject> nearNodesObj;
+    public List<ResourcesType> nearNodesRes;
     public transportnode node;
-    public GameObject nodeObj;
+    public ResourcesType nodeRes;
     public Factory factory;
     public float searchRadius = 1f;
 
@@ -24,7 +24,9 @@ public class ResourcesType : MonoBehaviour
         Copper = 1 << 0, //0
         Sand = 1 << 1, //1
         Kwartz = 1 << 2, //2
-        None = 4 << 3
+        Pestan = 1 << 3, //3 Sand + Copper
+        Quadran = 1 << 4, //4 Copper + Kwartz
+        None = 2 << 5
     }
 
     void Start()
@@ -38,19 +40,28 @@ public class ResourcesType : MonoBehaviour
 
     public void FindObjectsInRadius()
     {
-        nearNodesObj.Clear();
+        nearNodesRes.Clear();
         nearbyNodesScripts.Clear();
         var allNodes = FindObjectsOfType<GameObject>();
+        float nearestDist = Mathf.Infinity;
 
-        foreach(var node in allNodes)
+        foreach (var nodE in allNodes)
         {
-            if (node == this)
+            float distance = Vector2.Distance(transform.position, nodE.transform.position);
+            if (nodE == this)
                 continue;
 
-            if (Vector2.Distance(transform.position, node.transform.position) <= searchRadius && node.tag == "node")
+            if (distance <= searchRadius && nodE.tag == "node" && distance < nearestDist)
             {
-                nearNodesObj.Add(node);
-                nearbyNodesScripts.Add(node.GetComponent<transportnode>());
+                nearestDist = distance;
+                nodeRes = nodE.GetComponent<ResourcesType>();
+                node = nodE.GetComponent<transportnode>();
+            }
+
+            if(distance <= searchRadius && nodE.tag == "node")
+            {
+                nearNodesRes.Add(nodE.GetComponent<ResourcesType>());
+                nearbyNodesScripts.Add(nodE.GetComponent<transportnode>());
             }
         }
     }
@@ -59,38 +70,22 @@ public class ResourcesType : MonoBehaviour
     {
         while (true)
         {
-            FindObjectsInRadius();
-            if(nearbyNodesScripts.Count > 0 || nearNodesObj.Count > 0)
+            if (node != null && nodeRes.tag == "node" &&  node.CurResHold < node.resCapacity)
             {
-                nodeObj = nearNodesObj[0];
-                node = nearbyNodesScripts[0];
-
-                if (node != null && nodeObj.tag == "node" && node.CurResHold < node.resCapacity)
+                if (!isFactory)
                 {
-                    if (!isFactory)
-                    {
-                        resAmmount[0]--;
-                        node.CurResHold++;
-                        var nodeResourcesScript = nodeObj.GetComponent<ResourcesType>();
-                        nodeResourcesScript.currRes = transform.GetComponent<ResourcesType>().currRes;
-                    }
-                    else if(isFactory && resAmmount[factory.resourceToAdd] > 0)
-                    {
-                        resAmmount[factory.resourceToAdd]--;
-                        node.CurResHold++;
-                        var nodeResourcesScript = nodeObj.GetComponent<ResourcesType>();
-                        nodeResourcesScript.currRes = (ResourceType1)factory.resourceToAdd + 1;
-                        
-                    }
+                    resAmmount[0]--;
+                    node.CurResHold++;
+                    nodeRes.currRes = currRes;
+                }
+                else if (isFactory && resAmmount[factory.ConvertPowerOfTwoToSequenceNumber((int)factory.resourceToAdd)] > 0)
+                {
+                    nodeRes.currRes = factory.resourceToAdd;
+                    resAmmount[factory.ConvertPowerOfTwoToSequenceNumber((int)factory.resourceToAdd)]--;
+                    node.CurResHold++;
+
                 }
             }
-            
-            /*if(nodeObj.tag == "Sentry" && nodeObj.GetComponent<ResourcesType>().resAmmount < nodeObj.GetComponent<ResourcesType>().maxResAmmount)
-            {
-                ResourcesType buildingResourcesScript = nodeObj.GetComponent<ResourcesType>();
-                resAmmount--;
-                buildingResourcesScript.resAmmount++;
-            }*/
             yield return new WaitForSeconds(1);
         }
     }
@@ -136,6 +131,7 @@ public class ResourcesType : MonoBehaviour
         while (true)
         {
             activeFlags = GetActiveFlags(currRes);
+            FindObjectsInRadius();
             yield return new WaitForSeconds(1);
         }
     }
