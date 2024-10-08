@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7167684957225722245}
   - component: {fileID: 7667501310994178961}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1736297903
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 4
-  m_Sprite: {fileID: -2053449344, guid: 0fdfc0cf630377e4bba050ada40194c2, type: 3}
+  m_Sprite: {fileID: 360061869, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4743734444212051099}
   - component: {fileID: 6217077907103979047}
   - component: {fileID: 2984699982518859488}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Ranger
   m_TagString: Sentry
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2904174438415032667}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -236,10 +236,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1736297903
+  m_SortingLayerID: -1139898307
   m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -112567365, guid: 8cfa4d787d33d0b48a35d8a7ab530233, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -527968589, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3395066070361499139}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3811618046117328801}
   - component: {fileID: 6144259015747299808}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,9 +376,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1736297903
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 141652880, guid: 0fdfc0cf630377e4bba050ada40194c2, type: 3}
+  m_Sprite: {fileID: 2030775730, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 3574750917246063311}
   - component: {fileID: 4408467073794355825}
   - component: {fileID: 18468998625986009}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

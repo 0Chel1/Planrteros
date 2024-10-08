@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1736297903
+  m_SortingLayerID: -1139898307
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1407173618, guid: e1ef83fd7e045aa4694089974f3fea93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,9 @@ MonoBehaviour:
   randSound: []
   sentry: {fileID: 817393643117474978, guid: 583ae0162858aec41919b52a57dd0907, type: 3}
   IncubationTime: 5
+  slider: {fileID: 0}
+  tilemap: {fileID: 0}
+  gridPosition: {x: 0, y: 0, z: 0}
   playSound: 1
 --- !u!82 &6014180182549241480
 AudioSource:

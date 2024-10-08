@@ -51,6 +51,12 @@ public class transportnode : MonoBehaviour
         {
             ConnectZone.SetActive(false);
         }
+
+
+        if(CurResHold <= 0)
+        {
+            CurResHold = 0;
+        }
     }
 
     void OnMouseDown()
@@ -64,7 +70,7 @@ public class transportnode : MonoBehaviour
             line.SetPosition(0, curPos);
             line.SetPosition(1, curPos);
         }
-        else if (output < maxOutputs)
+        else
         {
             foreach (var nearbyNode in nearbyNodesScripts)
             {
@@ -104,21 +110,18 @@ public class transportnode : MonoBehaviour
         {
             if (connectedWith != null)
             {
-                if (CurResHold > 0)
+                if (connectedWith.CurResHold < connectedWith.resCapacity)
                 {
-                    if (connectedWith.CurResHold < connectedWith.resCapacity)
+
+                    StartCoroutine(AddRes());
+
+                    if (connectedWith.resource.currRes == ResourceType1.None)
                     {
-
-                        StartCoroutine(AddRes());
-
-                        if (connectedWith.resource.currRes == ResourceType1.None)
-                        {
-                            connectedWith.resource.currRes = resource.currRes;
-                        }
+                        connectedWith.resource.currRes = resource.currRes;
                     }
                 }
             }
-            else if (buildingResNeed != null && CurResHold > 0 && HasCommonFlags(resource))
+            else if (buildingResNeed != null && HasCommonFlags(resource))
             {
                 StartCoroutine(AddRes());
             }
@@ -141,39 +144,42 @@ public class transportnode : MonoBehaviour
     {
         while (true)
         {
-            int resourceIndex = ConvertPowerOfTwoToSequenceNumber((int)resource.currRes) - 1;
-            if (buildingResNeed != null)
+            if(CurResHold > 0)
             {
-                if (buildingResNeed.resAmmount[resourceIndex] < buildingResNeed.maxResAmmount)
+                int resourceIndex = ConvertPowerOfTwoToSequenceNumber((int)resource.currRes) - 1;
+                if (buildingResNeed != null)
                 {
-                    CurResHold--;
-                    if (counter >= resourcesSprites.Count)
+                    if (buildingResNeed.resAmmount[resourceIndex] < buildingResNeed.maxResAmmount)
                     {
-                        counter = 0;
-                    }
+                        CurResHold--;
+                        if (counter >= resourcesSprites.Count)
+                        {
+                            counter = 0;
+                        }
 
-                    resourcesSprites[counter] = Instantiate(resourcesSpritesExamples[resourceIndex], transform.position, Quaternion.identity);
-                    resourcesSprites[counter].transform.DOMove(buildingResNeed.transform.position, 1);
-                    resourcesSprites[counter] = null;
-                    buildingResNeed.resAmmount[resourceIndex]++;
-                    counter++;
+                        resourcesSprites[counter] = Instantiate(resourcesSpritesExamples[resourceIndex], transform.position, Quaternion.identity);
+                        resourcesSprites[counter].transform.DOMove(buildingResNeed.transform.position, 1);
+                        resourcesSprites[counter] = null;
+                        buildingResNeed.resAmmount[resourceIndex]++;
+                        counter++;
+                    }
                 }
-            }
-            else if(connectedWith != null)
-            {
-                if (connectedWith.CurResHold < resCapacity)
+                else if (connectedWith != null)
                 {
-                    CurResHold--;
-                    if (counter >= resourcesSprites.Count)
+                    if (connectedWith.CurResHold < resCapacity)
                     {
-                        counter = 0;
-                    }
+                        CurResHold--;
+                        if (counter >= resourcesSprites.Count)
+                        {
+                            counter = 0;
+                        }
 
-                    resourcesSprites[counter] = Instantiate(resourcesSpritesExamples[resourceIndex], transform.position, Quaternion.identity);
-                    resourcesSprites[counter].transform.DOMove(connectedWith.resource.transform.position, 1);
-                    resourcesSprites[counter] = null;
-                    connectedWith.CurResHold++;
-                    counter++;
+                        resourcesSprites[counter] = Instantiate(resourcesSpritesExamples[resourceIndex], transform.position, Quaternion.identity);
+                        resourcesSprites[counter].transform.DOMove(connectedWith.resource.transform.position, 1);
+                        resourcesSprites[counter] = null;
+                        connectedWith.CurResHold++;
+                        counter++;
+                    }
                 }
             }
             yield return new WaitForSeconds(1);

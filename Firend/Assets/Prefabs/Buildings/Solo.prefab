@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4546568150376140184}
   - component: {fileID: 1799706091572397516}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1736297903
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 4
-  m_Sprite: {fileID: 633136466, guid: 0fdfc0cf630377e4bba050ada40194c2, type: 3}
+  m_Sprite: {fileID: 1647550607, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2118648404482912946}
   - component: {fileID: 8812727699317000291}
   - component: {fileID: 4494289610245618317}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8126785810024212114}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654988311939336680}
   - component: {fileID: 4725388001933545700}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,9 +380,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1736297903
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -142124604, guid: 0fdfc0cf630377e4bba050ada40194c2, type: 3}
+  m_Sprite: {fileID: -738090047, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -439,12 +439,12 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7515210405069960130}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 2
+  m_Mass: 20
+  m_LinearDrag: 100
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -457,7 +457,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &5405984857570250214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,10 +544,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1736297903
+  m_SortingLayerID: -1139898307
   m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 1301894669, guid: 8cfa4d787d33d0b48a35d8a7ab530233, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 2031837303, guid: b93dd44c6b1598641a8d0ce988ff9477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

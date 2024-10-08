@@ -20,13 +20,13 @@ TagManager:
   - UI
   - whatIsWall
   - 
-  - 
+  - NotBuilded
   - Friendly
   - Player
   - Enemy
   - LineEnds
-  - 
-  - 
+  - Cursor
+  - FlyingEnemy
   - 
   - 
   - 
@@ -54,9 +54,21 @@ TagManager:
   - name: Ores
     uniqueID: 3712185119
     locked: 0
-  - name: PlayerStuff
-    uniqueID: 1736297903
+  - name: Buildings
+    uniqueID: 3155068989
     locked: 0
   - name: Resources
     uniqueID: 1516765421
+    locked: 0
+  - name: Enemys
+    uniqueID: 3816619139
+    locked: 0
+  - name: PlayerStuff
+    uniqueID: 1736297903
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1891513199
+    locked: 0
+  - name: UI
+    uniqueID: 3901022099
     locked: 0

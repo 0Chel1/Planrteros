@@ -18,6 +18,7 @@ public class BuildingSystem : MonoBehaviour
     public LayerMask enemyLayer;
     public List<GameObject> buildingsToDelete;
     public TextMeshProUGUI buildingText;
+    public CustomCursor CUrsor;
     public bool canBuild = false;
     private bool BuildingModOn = false;
 
@@ -46,31 +47,43 @@ public class BuildingSystem : MonoBehaviour
             buildingText.text = "Строительство:Off";
         }
 
-        if (Input.GetMouseButtonDown(0) && buidingToPlace != null)
+        if (Input.GetMouseButtonDown(0) && buidingToPlace != null && CUrsor.CanBuild)
         {
-            Instantiate(buidingToPlace, cursor.transform.position, Quaternion.identity);
-            //plHealth.TakeDamage(1);
+            GameObject building = Instantiate(buidingToPlace, cursor.transform.position, Quaternion.identity);
+            /*if(building.transform.childCount > 0)
+            {
+                foreach (Transform child in building.transform)
+                {
+                    child.gameObject.layer = 9;
+                }
+                building.layer = 8;
+            }
+            else
+            {
+                building.layer = 9;
+            }*/
+            plHealth.TakeDamage(1);
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) && BuildingModOn)
         {
             buidingToPlace = null;
             cursor.gameObject.SetActive(false);
             Cursor.visible = true;
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && BuildingModOn)
         {
             startPoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             selectionBox.SetActive(true);
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && BuildingModOn)
         {
             endPoint = Input.mousePosition;
             UpdateSelectionBox();
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && BuildingModOn)
         {
             endPoint = Input.mousePosition;
             ApplyDeliting();
@@ -117,6 +130,7 @@ public class BuildingSystem : MonoBehaviour
         
         for(int i = 0; i < buildingsToDelete.Count; i++)
         {
+            plHealth.Heal(0.5f);
             Destroy(buildingsToDelete[i]);
         }
 

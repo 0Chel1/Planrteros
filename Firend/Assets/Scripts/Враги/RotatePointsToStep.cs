@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotatePointsToStep : MonoBehaviour
 {
     public Vector2 lastPos;
+    public float offset;
     void Start()
     {
         lastPos = transform.position;
@@ -21,7 +22,7 @@ public class RotatePointsToStep : MonoBehaviour
             if(diff != new Vector2(0, 0))
             {
                 float rotateZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, rotateZ);
+                transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
                 lastPos = transform.position;
             }
             yield return new WaitForSeconds(0.1f);

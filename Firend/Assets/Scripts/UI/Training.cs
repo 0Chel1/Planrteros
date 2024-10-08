@@ -10,6 +10,7 @@ public class Training : MonoBehaviour
     public WavesSystem wavesSystem;
     private int TextCurrentCount = 0;
     private int TextsCount = 3;
+    private bool pushed = false;
     void Start()
     {
         TextCurrentCount = PlayerPrefs.GetInt("TextsCount");
@@ -39,7 +40,11 @@ public class Training : MonoBehaviour
             {
                 text.text = "";
                 PlayerPrefs.SetInt("TextsCount", TextCurrentCount);
-                wavesSystem.time = 1;
+                if (!pushed)
+                {
+                    wavesSystem.time = 1;
+                    pushed = true;
+                }
             }
         }
 
